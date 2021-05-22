@@ -28,5 +28,5 @@ class Engine():
             for force in applied_forces:
                 gravitational_force = (mathe.normalize(mathe.add_vectors(gravitational_force[0],force[0])),mathe.add_vectors(gravitational_force[0],force[0])[0]/mathe.normalize(mathe.add_vectors(gravitational_force[0],force[0]))[0])
                 # gibt ein Array = (vector, vectorstärke)
-            obj1.gforce  = gravitational_force[1]
+            obj1.gforce = gravitational_force[1]
             obj1.direction = gravitational_force[0]

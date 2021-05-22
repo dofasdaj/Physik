@@ -28,9 +28,13 @@ class Window(QWidget):
         self.objects = []
         self.rectangle = Object.Objekt("Rechteck")
         self.rectangle2 = Object.Objekt("Rechteck")
+        self.rectangle3 = Object.Objekt("Rechteck")
         self.rectangle2.position = (300,300)
+        self.rectangle3.position = (100,300)
+        self.rectangle3.mass = 5000
         self.objects.append(self.rectangle)
         self.objects.append(self.rectangle2)
+        self.objects.append(self.rectangle3)
 
         self.physik_engine = Physik.Engine()    # Erzeugt die Physik_Engine auf
 
@@ -63,8 +67,8 @@ class Window(QWidget):
         painter.setBrush(QBrush(Qt.green, Qt.SolidPattern))
         #painter.drawRect(self.rectangle.rect)
         #painter.drawEllipse(self.obj.pos[0], self.obj.pos[1], 100, 100)
-        painter.drawEllipse(self.rectangle.rect)
-        painter.drawEllipse(self.rectangle2.rect)
+        for obj in self.objects:
+            painter.drawEllipse(obj.rect)
 
 
 def main():

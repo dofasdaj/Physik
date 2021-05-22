@@ -13,7 +13,7 @@ class Objekt():
 
         self.force = 0
         self.gforce = 0
-        self.mass = 3
+        self.mass = 500
 
     def gravitation(self, obj):
         vector = (obj.vec_x - self.vec_x, obj.vec_y - self.vec_y)
@@ -25,7 +25,7 @@ class Objekt():
         self.force = self.gforce        # addition aller wirkenden kräfte (als vector!)
 
     def check_vel(self):
-        self.velocity = self.force/self.mass
+        self.velocity += self.force/self.mass
         print(self.velocity, " check_vel")
 
     def changepos(self):
