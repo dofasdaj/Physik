@@ -2,12 +2,13 @@ from PyQt5.QtWidgets import QWidget
 from PyQt5.QtGui import QPainter, QPen, QBrush
 from PyQt5.QtCore import Qt
 from PyQt5.QtCore import QTimer
+import random
 
 import Object
 import Physik
 
 class Game(QWidget):
-    def __init__(self, UI):
+    def __init__(self, UI, number_of_objects):
         super().__init__()
         self.title = "Game"
         self.top = 150
@@ -19,8 +20,19 @@ class Game(QWidget):
         self.x = 40
         self.y = 40
         self.timerSetup()
-
         self.objects = []
+        for i in range(number_of_objects.value()):
+            print(random.randint(0,500))
+            obj = Object.Objekt("Rechteck")
+            obj.position = (random.randint(0,500),random.randint(0,500))
+            obj.mass = random.randint(0,10000)
+            self.objects.append(obj)
+
+        self.objects[0].velocity = (3,0)
+
+        self.physik_engine = Physik.Engine()  # Erzeugt die Physik_Engine auf
+
+        """
         self.rectangle = Object.Objekt("Rechteck")
         self.rectangle2 = Object.Objekt("Rechteck")
         self.rectangle3 = Object.Objekt("Rechteck")
@@ -31,8 +43,7 @@ class Game(QWidget):
         self.objects.append(self.rectangle)
         self.objects.append(self.rectangle2)
         self.objects.append(self.rectangle3)
-
-        self.physik_engine = Physik.Engine()    # Erzeugt die Physik_Engine auf
+        """
 
     def timerSetup(self):
         self.timer = QTimer(self)

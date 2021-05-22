@@ -2,7 +2,7 @@ import mathe
 
 class Engine():
     def __init__(self):
-        self.gravitations_konst = 0.01
+        self.gravitations_konst = 0.001
     def check_physics(self,objects):            # objects: Liste aller Objekte
 
         """

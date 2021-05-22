@@ -96,7 +96,7 @@ class UI(qw.QWidget):
         self.updateValueText(self.objectCountSlider, " Objekt/e")
 
     def startGame(self):
-        self.game = Game(self)
+        self.game = Game(self, self.objectCountSlider)
         self.game.show()
         self.game.closeEvent = self.gameClosed
         self.hide()

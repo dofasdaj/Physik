@@ -33,7 +33,7 @@ class Objekt():
 
     def check_vel(self):
         print(self.force, " check_vel")
-        self.velocity = (self.force[0]/self.mass, self.force[1]/self.mass)   # v = a*t   a = F/m
+        self.velocity = (self.velocity[0]+self.force[0]/self.mass, self.velocity[1]+self.force[1]/self.mass)   # v = a*t   a = F/m
 
 
     def changepos(self):
