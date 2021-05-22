@@ -4,8 +4,12 @@ from PyQt5.QtCore import Qt, QRect
 from PyQt5.QtCore import QTimer
 #import numpy as np
 import mathe
-import Object
 import sys
+
+# Import eigener Module
+
+import Object
+import Physik
 
 class Window(QWidget):
     def __init__(self):
@@ -28,6 +32,8 @@ class Window(QWidget):
         self.objects.append(self.rectangle)
         self.objects.append(self.rectangle2)
 
+        self.physik_engine = Physik.Engine()    # Erzeugt die Physik_Engine auf
+
     def timerSetup(self):
         self.timer = QTimer(self)
         self.timer.setInterval(10)
@@ -39,24 +45,12 @@ class Window(QWidget):
         self.setGeometry(self.top, self.left, self.width, self.height)
         self.show()
 
-    def check_gravitation(self):
-        for obj1 in self.objects:
-            for obj2 in self.objects:
-                if obj1 != obj2:
-                    force = obj1.gravitation(obj2)
-
-                    obj1.velocity = force[1]
-                    obj1.direction = force[0]
-
-                    #print(self, "  ", "x:", mathe.normalize(vector)[0], "y: ", mathe.normalize(vector)[1])
-                    #print(obj1.direction)
-                    #print(obj1.velocity)
 
     def game(self):
         for obj in self.objects:
             obj.update()
         self.update()
-        self.check_gravitation()
+        self.physik_engine.check_physics(self.objects)          # ruft die ein update der Physik_Engine auf
 
     """def changepos(self):
         self.x += 1
