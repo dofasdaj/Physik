@@ -50,7 +50,7 @@ class Window(QWidget):
         for obj in self.objects:
             obj.update()
         self.update()
-        self.physik_engine.check_physics(self.objects)          # ruft die ein update der Physik_Engine auf
+        self.physik_engine.check_physics(self.objects)          # ruft ein update der Physik_Engine auf
 
     """def changepos(self):
         self.x += 1
