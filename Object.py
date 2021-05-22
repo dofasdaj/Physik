@@ -12,12 +12,19 @@ class Objekt():
         self.vec_y = 30
 
         self.force = 0
+        self.mass = 1
 
     def gravitation(self, obj):
         vector = (obj.vec_x - self.vec_x, obj.vec_y - self.vec_y)
         # print(mathe.normalize(vector),",",self)
         # print(self, "  ", "x:", mathe.normalize(vector)[0], "y: ", mathe.normalize(vector)[1])
         return (mathe.normalize(vector), 1)
+
+    def check_forces(self):
+        self.force = self.gforce        # addition aller wirkenden kräfte (als vector!)
+
+    def check_vel(self):
+        self.vel = self.force
 
     def changepos(self):
         current_coords = self.position  # !gibt nur INTs aus. Unterscheide zwischen Pixel und Koordinaten!

@@ -2,7 +2,7 @@ import mathe
 
 class Engine():
     def __init__(self):
-        pass
+        self.gravitations_konst = 1
     def check_physics(self,objects):            # objects: Liste aller Objekte
 
         """
@@ -26,8 +26,7 @@ class Engine():
             gravitational_force = ((0,0),0)
 
             for force in applied_forces:
-                print(applied_forces)
-                gravitational_force = (mathe.add_vectors(gravitational_force[0],force[0]),1)
-
+                gravitational_force = (mathe.normalize(mathe.add_vectors(gravitational_force[0],force[0])),mathe.add_vectors(gravitational_force[0],force[0])[0]/mathe.normalize(mathe.add_vectors(gravitational_force[0],force[0]))[0])
+                # gibt ein Array = (vector, vectorstärke)
             obj1.velocity = gravitational_force[1]
             obj1.direction = gravitational_force[0]
