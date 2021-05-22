@@ -6,13 +6,9 @@ class Engine():
     def check_physics(self,objects):            # objects: Liste aller Objekte
 
         """
-
         check_physics soll Alle physikaltischen Abfragen aufrufen. Bspw.: Gravitationsberechnung
-
         Anwendung in der "main_loop" zum update der ganzen Physik_Engine
-
         Idee: Liste an Funktionen welche abgerufen werden sollen?
-
         """
 
         self.check_gravitation(objects)
