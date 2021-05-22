@@ -31,6 +31,7 @@ class Window(QWidget):
         self.rectangle3 = Object.Objekt("Rechteck")
         self.rectangle2.position = (300,300)
         self.rectangle3.position = (100,300)
+        self.rectangle.mass = 5000
         self.rectangle3.mass = 5000
         self.rectangle2.velocity = 2
         self.objects.append(self.rectangle)
