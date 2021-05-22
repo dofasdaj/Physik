@@ -2,8 +2,8 @@ import mathe
 
 class Engine():
     def __init__(self):
-        self.gravitations_konst = 0.001
-    def check_physics(self,objects):            # objects: Liste aller Objekte
+        self.gravitations_konst = 0.0001
+    def check_physics(self,game,objects):            # objects: Liste aller Objekte
 
         """
 
@@ -16,6 +16,24 @@ class Engine():
         """
 
         self.check_gravitation(objects)
+        self.check_collision(game)
+    def check_collision(self, game):
+        for obj1 in game.objects:
+            for obj2 in game.objects:
+                if obj1 != obj2:
+                    dis = 50
+                    if (((obj1.position[0] - obj2.position[0]) < dis) and (obj1.position[0] - obj2.position[0]) > (-1*dis)) and (((obj1.position[1] - obj2.position[1]) < dis) and ((obj1.position[1] - obj2.position[1]) > -1*dis)):
+                        print(-dis)
+                        x = 0
+                        for i in game.objects:
+                            if game.objects[x] == obj2:
+                                print("Litauen")
+                                obj1.mass += obj2.mass
+                                obj1.velocity = mathe.add_vectors(obj1.velocity,obj2.velocity)
+                                game.objects.pop(x)
+                            x+=1
+
+
     def check_gravitation(self,objects):
         for obj1 in objects:
             applied_forces = [] # Liste aller wirkenden Gravitationskräfte
@@ -26,8 +44,8 @@ class Engine():
             gravitational_force = (0, 0)
 
             for force in applied_forces:
-                print(gravitational_force)
-                print(force[0], "force")
+                # print(gravitational_force)
+                # print(force[0], "force")
                 gravitational_force = mathe.add_vectors(gravitational_force, force[1])
                 # mathe.add_vectors(gravitational_force[0],force[0]*)/mathe.normalize(mathe.add_vectors(gravitational_force[0],force[0]))[0]
                 # gibt ein Array = (vector, vectorstärke)

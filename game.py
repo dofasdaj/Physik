@@ -28,7 +28,7 @@ class Game(QWidget):
             obj.mass = random.randint(0,10000)
             self.objects.append(obj)
 
-        self.objects[0].velocity = (3,0)
+        self.objects[0].velocity = (1.5,0)
 
         self.physik_engine = Physik.Engine()  # Erzeugt die Physik_Engine auf
 
@@ -60,7 +60,8 @@ class Game(QWidget):
         for obj in self.objects:
             obj.update()
         self.update()
-        self.physik_engine.check_physics(self.objects)          # ruft ein update der Physik_Engine auf
+        self.physik_engine.check_physics(self, self.objects)          # ruft ein update der Physik_Engine auf
+        print(len(self.objects))
 
     """def changepos(self):
         self.x += 1

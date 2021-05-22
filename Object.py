@@ -32,13 +32,13 @@ class Objekt():
         self.force = self.gforce        # addition aller wirkenden kräfte (als vector!)
 
     def check_vel(self):
-        print(self.force, " check_vel")
+        # print(self.force, " check_vel")
         self.velocity = (self.velocity[0]+self.force[0]/self.mass, self.velocity[1]+self.force[1]/self.mass)   # v = a*t   a = F/m
 
 
     def changepos(self):
         current_coords = self.position # !gibt nur INTs aus. Unterscheide zwischen Pixel und Koordinaten!
-        print(current_coords[0])
+        # print(current_coords[0])
         self.vec_x = current_coords[0] + self.velocity[0]
         self.vec_y = current_coords[1] + self.velocity[1]
         self.position = (self.vec_x, self.vec_y)
@@ -46,7 +46,7 @@ class Objekt():
 
     def draw(self):
         try:
-            print(round(self.vec_x, 0))
+            # print(round(self.vec_x, 0))
             self.rect.moveTo(round((self.vec_x)), round(float(self.vec_y)))
         except:
             pass
