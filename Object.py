@@ -11,6 +11,8 @@ class Objekt():
         self.vec_x = 30
         self.vec_y = 30
 
+        self.force = 0
+
     def gravitation(self, obj):
         vector = (obj.vec_x - self.vec_x, obj.vec_y - self.vec_y)
         # print(mathe.normalize(vector),",",self)

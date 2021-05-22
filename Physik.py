@@ -1,3 +1,5 @@
+import mathe
+
 class Engine():
     def __init__(self):
         pass
@@ -16,9 +18,16 @@ class Engine():
         self.check_gravitation(objects)
     def check_gravitation(self,objects):
         for obj1 in objects:
+            applied_forces = [] # Liste aller wirkenden Gravitationskräfte
             for obj2 in objects:
                 if obj1 != obj2:
-                    force = obj1.gravitation(obj2)
+                    applied_forces.append(obj1.gravitation(obj2))   # jede Kraft wird in Liste "applied_forces" hinzugefügt
 
-                    obj1.velocity = force[1]
-                    obj1.direction = force[0]
+            gravitational_force = ((0,0),0)
+
+            for force in applied_forces:
+                print(applied_forces)
+                gravitational_force = (mathe.add_vectors(gravitational_force[0],force[0]),1)
+
+            obj1.velocity = gravitational_force[1]
+            obj1.direction = gravitational_force[0]
