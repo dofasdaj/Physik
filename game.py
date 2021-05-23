@@ -28,7 +28,7 @@ class Game(QWidget):
             obj.mass = random.randint(0,10000)
             self.objects.append(obj)
 
-        self.objects[0].velocity = (1.5,0)
+        self.objects[0].velocity = (0.5,0)
 
         self.physik_engine = Physik.Engine()  # Erzeugt die Physik_Engine auf
 

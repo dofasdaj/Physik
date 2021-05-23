@@ -28,8 +28,9 @@ class Engine():
                         for i in game.objects:
                             if game.objects[x] == obj2:
                                 print("Litauen")
-                                obj1.mass += obj2.mass
                                 obj1.velocity = mathe.add_vectors(obj1.velocity,obj2.velocity)
+                                obj1.mass += obj2.mass
+                                obj1.radius += obj2.radius
                                 game.objects.pop(x)
                             x+=1
 

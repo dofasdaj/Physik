@@ -5,16 +5,17 @@ import math
 class Objekt():
     def __init__(self, form):
         # self.velocity = 0
+        self.mass = 500
+        self.radius = round(self.mass/20)
         self.position = (30, 30)
         if form == "Rechteck":
             self.velocity = (0, 0)
-            self.rect = QRect(self.position[0], self.position[1], 100, 100)
+            self.rect = QRect(self.position[0], self.position[1], self.radius, self.radius)
         self.vec_x = 30
         self.vec_y = 30
 
         self.force = 0
         self.gforce = (0,0)
-        self.mass = 500
 
     def gravitation(self, obj, gkonst):
         vector = mathe.normalize((obj.vec_x - self.vec_x, obj.vec_y - self.vec_y))
@@ -27,7 +28,8 @@ class Objekt():
         # print(mathe.normalize(vector),",",self)
         # print(self, "  ", "x:", mathe.normalize(vector)[0], "y: ", mathe.normalize(vector)[1])
         return (vector, gforce)
-
+    def check_size(self):
+        self.rect=QRect(self.rect.getCoords()[0],self.rect.getCoords()[1],self.radius,self.radius)
     def check_forces(self):
         self.force = self.gforce        # addition aller wirkenden kräfte (als vector!)
 
@@ -56,3 +58,4 @@ class Objekt():
         self.check_vel()
         self.changepos()
         self.draw()
+        self.check_size()
