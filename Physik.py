@@ -33,6 +33,9 @@ class Engine():
                                 game.objects.pop(x)
                             x+=1
 
+    def impuls(self,obj1,obj2):
+        force = mathe.add_vectors(obj1.force,obj2.force)
+        return force
 
     def check_gravitation(self,objects):
         for obj1 in objects:
